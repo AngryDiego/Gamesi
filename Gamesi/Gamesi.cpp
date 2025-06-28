@@ -17,7 +17,7 @@ public:
 		speed = s;
 	}
 
-	Character (int& health, int& speed) : health(health), speed(speed) {}
+	Character (int& health, int& speed) : health(health), speed(speed) {} //Constructor that directly takes two intengers and then pushing it back (its not called pushing back, but idk how to refer to it >.< ) 
 
 	virtual std::string Attack() const = 0;
 
