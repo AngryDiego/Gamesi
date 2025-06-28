@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <memory>
 
 class Character {
 protected:
@@ -15,12 +17,18 @@ public:
 		speed = s;
 	}
 
+	Character (int& health, int& speed) : health(health), speed(speed) {}
+
 	virtual std::string Attack() const = 0;
 
 	virtual std::string Movement() const = 0;
 };
 
 class Warrior : public Character {
+public :
+
+	Warrior(int h, int s) : Character (std::move(h), std::move(s)) {}
+
 	std::string Attack() const override {
 		return "Warrior is attacking";
 	}
@@ -31,6 +39,10 @@ class Warrior : public Character {
 };
 
 class Wizard : public Character {
+public:
+
+	Wizard(int h, int s) : Character(std::move(h), std::move(s)) {}
+
 	std::string Attack() const override {
 		return "Wizard is casting fire bolt (I hate spell casters in DnD (They are unbalanced, literally any problem solved eather thru 'control person' or 'fire ball' and i`m not even talking about 'mage armor'. Their damage is too high compared to marshal classes.))";
 	}
@@ -41,6 +53,10 @@ class Wizard : public Character {
 };
 
 class Archer : public Character {
+public:
+
+	Archer(int h, int s) : Character(std::move(h), std::move(s)) {}
+
 	std::string Attack() const override {
 		return "Archer is shooting";
 	}
