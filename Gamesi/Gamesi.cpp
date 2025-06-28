@@ -67,4 +67,11 @@ public:
 };
 
 int main() {
+	std::vector<std::unique_ptr<Character>> characters ; // Creating vector with Unoque ptr and which have name "characters"
+	characters.push_back(std::make_unique<Warrior>(100, 35)) ;// Creating Unique warrior and pushing it back (pushing it back to the front lines :3 )
+	characters.push_back(std::make_unique<Archer>(65, 25));
+
+	for (auto& character : characters) { //Creating For with size of vector
+		std::cout << character->Attack() << ", " << character->Movement() << std::endl;// Making output of current character and Attack with movement by using -> (idk how or why it works)
+	}
 }
